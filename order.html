@@ -1,0 +1,214 @@
+<html>
+<head>
+    <title>Restaurant Order</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h2 {
+            margin: 20px;
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            margin: 10px auto;
+            padding: 10px;
+            width: 90%;
+            border-radius: 8px;
+        }
+
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .menu-details {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .menu-details h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        .menu-details span {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .checkbox-container {
+            margin-left: auto; 
+        }
+        .order-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ddd;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+#place-order {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#place-order:hover {
+    background-color: #218838;
+}
+    </style>
+</head>
+<body>
+    <h2> Delivery Order System</h2>
+    <h2>Heroes</h2>
+    <div class="menu-item">
+        <img src="Chicken Parmesan Hero.jpg" alt="Chicken Parmesan Hero">
+        <div class="menu-details">
+            <h3>Chicken Parmesan Hero</h3>
+            <span>$15.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="hero1" name="hero1">
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="Barbecue Steak Hero.jpg" alt="Barbecue Steak Hero">
+        <div class="menu-details">
+            <h3>Barbecue Steak Hero</h3>
+            <span>$15.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="hero2" name="hero2">
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="Philly Cheese Steak.jpg" alt="Philly Cheese Steak">
+        <div class="menu-details">
+            <h3>Philly Cheese Steak</h3>
+            <span>$15.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="hero3" name="hero3">
+        </div>
+        
+    </div>
+   
+    <h2>Salads</h2>
+    <div class="menu-item">
+        <img src="Grilled Jerk Chicken Salad.jpg" alt="Grilled Jerk Chicken Salad">
+        <div class="menu-details">
+            <h3>Grilled Jerk Chicken Salad</h3>
+            <span>$17.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="salad1" name="salad1">
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="House Salad.jpg" alt="House Salad">
+        <div class="menu-details">
+            <h3>House Salad</h3>
+            <span>$12.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="salad2" name="salad2">
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="Fried Chicken Salad.jpg" alt="Fried Chicken Salad">
+        <div class="menu-details">
+            <h3>Fried Chicken Salad</h3>
+            <span>$17.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="salad3" name="salad3">
+        </div>
+        
+    </div>
+   
+    <h2>Sandwiches and Burgers</h2>
+    <div class="menu-item">
+        <img src="Bamburger.jpg" alt="Bamburger">
+        <div class="menu-details">
+            <h3>Bamburger</h3>
+            <span>$10.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="burger1" name="burger1">
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="Pulled Pork Sandwich.jpg" alt="Pulled Pork Sandwich">
+        <div class="menu-details">
+            <h3>Pulled Pork Sandwich</h3>
+            <span>$15.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="burger2" name="burger2">
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="Chicken Cutlet Sandwich.jpg" alt="Chicken Cutlet Sandwich">
+        <div class="menu-details">
+            <h3>Chicken Cutlet Sandwich</h3>
+            <span>$15.00</span>
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="burger3" name="burger3">
+        </div>
+        
+    </div>
+    <div class="order-summary">
+    <p>Total: <span id="total-price">$0.00</span></p>
+    <button id="place-order">Place Order</button>
+</div>
+<script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const totalPriceElement = document.getElementById('total-price');
+    let totalPrice = 0;
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const price = parseFloat(this.dataset.price);
+            if (this.checked) {
+                totalPrice += price;
+            } else {
+                totalPrice -= price;
+            }
+            totalPriceElement.textContent = "$ ${totalPrice.toFixed(2)}";
+        });
+    });
+    
+    document.getElementById('place-order').addEventListener('click', function() {
+        alert("Thank you! Your order total is $ ${totalPrice.toFixed(2)}.");
+    });
+    </script>
+ <pre>  <a href="index.html"> back to Home </a></pre>
+</body>
+</html>

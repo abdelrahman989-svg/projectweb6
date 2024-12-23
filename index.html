@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<head>
+<title> Web Project</title>
+
+<style>
+   body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-size: 100%;
+            text-align: center;
+        }
+
+        #welcome-message {
+            margin: 20px;
+            padding: 5px;
+            
+            color: #fff;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            
+        }
+
+    .d1{
+    font-weight: bold;
+    font-style: italic;
+    padding: 30px;
+}
+    .d2 {
+        
+display: flex;
+justify-content: space-between ;
+align-items: center;
+padding-right: 30px;
+float: right;
+float: top;
+    }
+.d2 a{
+color: white;
+text-decoration: none;
+border-radius: 10px;
+padding: 15px;
+text-align: center;
+
+}
+.d2 a:hover{
+    background-color:rgb(71, 65, 65)
+    
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.d1 h1 {
+  animation: slideIn 2s ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 
+                    0 0 30px rgba(255, 255, 255, 0.4), 
+                    0 0 40px rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 1), 
+                    0 0 60px rgba(255, 255, 255, 0.8), 
+                    0 0 80px rgba(255, 255, 255, 0.6);
+    }
+}
+.d3 a {
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #333;
+    animation: glow 1.5s infinite alternate;
+}
+.d3{
+   align-items: center;
+    padding:100px ;
+    text-align: center;
+    font-weight: bold;
+   
+}
+    
+
+.d3 a:hover {
+    background-color:rgb(71, 65, 65)
+}
+
+.info-section {
+    background-color: #fff; 
+    color: #333; 
+    padding: 2px;
+    text-align: center; 
+    margin-top: 20px;
+    margin-left: 250px;
+    margin-right: 250px;
+   
+}
+
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+ </head>
+<body background="bg.jpg" text="white" class="header"  >
+    <div id="welcome-message"></div>
+
+    <script>
+        
+        function showWelcomeMessage() {
+            
+            const messageDiv = document.getElementById('welcome-message');
+
+            
+            const welcomeText = "Welcome to our restaurant! We hope you have a wonderful dining experience";
+
+            
+            messageDiv.textContent = welcomeText;
+
+            
+            messageDiv.style.display = "block";
+        }
+
+        
+        window.onload = showWelcomeMessage;
+    </script>
+
+    
+<div class="d1">
+    <h1>MY RESTAURANT</h1>
+</div>
+
+<div id="date-container"></div>
+
+<script>
+    function updateDate() {
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('en-US', {
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+        });
+        document.getElementById('date-container').innerText = formattedDate;
+    }
+
+   
+    updateDate();
+
+    
+    const now = new Date();
+    const timeToMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).getTime() - now.getTime();
+    setTimeout(() => {
+        updateDate();
+        setInterval(updateDate, 24 * 60 * 60 * 1000); 
+    }, timeToMidnight);
+
+</script>
+
+
+        <div class="d2">
+            <nav>
+                <a href="#r" >contact </a>
+        <a href="menu.html" > Menu</a>
+        <a href="about.html" > About us </a>
+        <a href="order.html" > Order Delivery</a>
+        <a href="book.html" > Book Table </a>
+    </nav>
+    </div>
+    <div class="d3">
+        <h6>TASTY AND CRUNCHY</h6>
+        <h1 style="font-size: xx-large" >RESTAURANT </h1>
+        <h3>
+            Experience the taste of a perfect food , one of the best restaurant
+        </h3><br>
+        <a href="offers.html" > offers </a>
+        <br>
+        </div>
+
+<section id="contact">
+
+
+    <div  class="container">
+<div class="contact-content">
+    <div class="contact-info">
+    <div class="info-section">
+        <h3 >
+            ADDRESS
+        </h3>
+        <p><i class="fa-solid fa-location-dot"></i>Alexandria , Egypt</p>
+        <p><i class="fa-solid fa-phone"></i>Phone :123456789</p>
+        <p><i class="fa-solid fa-envelope"></i>support@ myrestaurant.com  </p>
+    </div>
+    <div class="info-section">
+        <h3>Working Hours</h3>
+        <p>8:00 am to 11:00 pm on weekdays</p>
+        <p>11:00 am to 1:00 am on weekends</p>
+    </div>
+    <div class="info-section">
+        <h3 id="r">Follow Us</h3>
+       <a href="#" ><i class="fa-brands fa-facebook"></i></a>
+       <a href="#" ><i class="fa-brands fa-twitter"></i></a>
+       <a href="#" ><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    </div>
+</div>
+    </div>
+</section>
+       
+ </body>
+</html>.
